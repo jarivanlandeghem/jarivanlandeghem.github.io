@@ -663,6 +663,9 @@ sheet.addEventListener("touchend", () => {
 });
 
 /* start */
+/* bij openen altijd op Home starten, ook als de link of de browser een andere pagina onthoudt */
+if (location.hash && location.hash !== "#/") history.replaceState(null, "", location.pathname + location.search);
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 route();
 requestAnimationFrame(() => { moveTabPill(); $$(".segmented").forEach(segPill); });
 document.fonts && document.fonts.ready.then(() => { moveTabPill(); $$(".segmented").forEach(segPill); });
